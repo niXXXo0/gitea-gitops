@@ -2,3 +2,7 @@
 gitea:
   
   replicaCount: 2
+  # временное демо-изменение для проверки gitops-цикла
+  resources:
+    requests:
+      cpu: 260m
