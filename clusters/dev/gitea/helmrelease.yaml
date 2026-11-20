@@ -1,5 +1,5 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: gitea
@@ -16,12 +16,11 @@ spec:
         namespace: gitea
       interval: 5m0s
   valuesFrom:
-    # не-секретные значения среды (ConfigMap генерируется kustomize)
+    
     - kind: ConfigMap
       name: gitea-values
       valuesKey: values.yaml
-    # секретные значения (пароль БД) — секрет gitea-db из init-secrets.yaml
-    # (git-crypt, применяется вручную один раз)
+
     - kind: Secret
       name: gitea-db
       valuesKey: values.yaml

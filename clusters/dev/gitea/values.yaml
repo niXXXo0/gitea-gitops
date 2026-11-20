@@ -1,5 +1,4 @@
-# Не-секретные значения среды dev (kind).
-# Секретные значения (пароль БД) — в init-secrets.yaml (git-crypt, вне зоны Flux).
+
 gitea:
-  # два пода + RollingUpdate — осознанный выбор, дублируем тут для видимости
+  
   replicaCount: 2

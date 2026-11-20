@@ -1,7 +1,5 @@
 ---
-# Ручной bootstrap, применяется один раз (не Flux'ом):
-#   kubectl apply -f init-namespace.yaml
-#   kubectl apply -f init-apps.yaml
+
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
@@ -13,10 +11,7 @@ spec:
   ref:
     branch: main
   secretRef:
-    # read-only deploy key репозитория gitea-gitops;
-    # секрет создаём один раз перед подключением:
-    #   kubectl create secret generic gitea-gitops-deploykey -n gitea \
-    #     --from-file=identity=~/.ssh/<deploy_key> --from-file=known_hosts=<(...)`
+  
     name: gitea-gitops-deploykey
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
